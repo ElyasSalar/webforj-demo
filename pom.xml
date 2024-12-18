@@ -12,13 +12,50 @@
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <webforj.version>24.12</webforj.version>
+    <webforj.version>24.20</webforj.version>
+    <webforj.version.addons>24.21-SNAPSHOT</webforj.version.addons>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>com.webforj</groupId>
-      <artifactId>webforj</artifactId>
+      <artifactId>webforj-foundation</artifactId>
+      <version>${webforj.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.webforj.addons</groupId>
+      <artifactId>webforj-suggestion-edit</artifactId>
+      <version>${webforj.version.addons}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.webforj.addons</groupId>
+      <artifactId>webforj-multi-select-combo</artifactId>
+      <version>${webforj.version.addons}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.webforj.addons</groupId>
+      <artifactId>webforj-properties-panel</artifactId>
+      <version>${webforj.version.addons}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.webforj.addons</groupId>
+      <artifactId>webforj-side-menu</artifactId>
+      <version>${webforj.version.addons}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.webforj</groupId>
+      <artifactId>webforj-html-elements</artifactId>
+      <version>${webforj.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.webforj</groupId>
+      <artifactId>webforj-applayout</artifactId>
       <version>${webforj.version}</version>
     </dependency>
   </dependencies>
