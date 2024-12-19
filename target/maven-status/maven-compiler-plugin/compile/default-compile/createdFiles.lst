@@ -1,1 +1,4 @@
 org\webforj\demo\Demo.class
+org\webforj\demo\component\grid\Grid$Theme.class
+org\webforj\demo\component\grid\event\ColumnMovedEvent.class
+org\webforj\demo\component\grid\Grid.class

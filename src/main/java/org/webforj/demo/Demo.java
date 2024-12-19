@@ -1,10 +1,10 @@
 package org.webforj.demo;
 
 import com.webforj.App;
-import com.webforj.addons.components.grid.Grid;
 import com.webforj.component.button.Button;
 import com.webforj.component.window.Frame;
 import com.webforj.exceptions.WebforjException;
+import org.webforj.demo.component.grid.Grid;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,41 +18,13 @@ public class Demo extends App {
     window.setStyle("height", "100%");
     window.setStyle("--dwc-grid-height", "500px");
 
-//    rowData: [
-//    { make: "Tesla", model: "Model Y", price: 64950, electric: true },
-//    { make: "Ford", model: "F-Series", price: 33850, electric: false },
-//    { make: "Toyota", model: "Corolla", price: 29600, electric: false },
-//        ],
-//    // Column Definitions: Defines the columns to be displayed.
-//    columnDefs: [
-//    { field: "make", filter: "agStringColumnFilter" },
-//    { field: "model", filter: "agStringColumnFilter" },
-//    { field: "price", filter: "agNumberColumnFilter" },
-//    { field: "electric", filter: "agBooleanColumnFilter" }
-//        ],
-//    rowHeight: 50,
-//            defaultColDef: {
-//      flex: 1,
-//              editable: true,
-//    },
-    final var rows = List.of(
-            Map.of("make", "Tesla", "model", "Model y", "price", 64950, "electric", true),
-            Map.of("make", "Ford", "model", "F-Series", "price", 33850, "electric", false),
-            Map.of("make", "Toyota", "model", "Corolla", "price", 29600, "electric", false)
-    );
-    final var columnDefs = List.of(
-            Map.of("field", "make", "filter", "agStringColumnFilter"),
-            Map.of("field", "model", "filter", "agStringColumnFilter"),
-            Map.of("field", "price", "filter", "agNumberColumnFilter"),
-            Map.of("field", "electric", "filter", "agBooleanColumnFilter")
-    );
     final var defaultColDef = Map.of(
             "flex", 1, "editable", true
     );
 
     final var options = new HashMap<String, Object>();
-    options.put("rowData", rows);
-    options.put("columnDefs", columnDefs);
+    options.put("rowData", getRows());
+    options.put("columnDefs", getColumnDefs());
     options.put("rowHeight", 50);
     options.put("defaultColDef", defaultColDef);
     final var grid = new Grid();
@@ -61,10 +33,61 @@ public class Demo extends App {
     final var showColumnFilter = new Button("showColumnFilter", (event) -> {
       grid.showColumnFilter("make");
     });
-    final var showColumnFilterGrid = new Button("showColumnFilterGrid", (event) -> {
-      grid.showColumnFilter("model");
+    final var showColumnMenu = new Button("showColumnMenu", event -> {
+      grid.showColumnMenu("model");
     });
 
-    window.add(grid, showColumnFilter, showColumnFilterGrid);
+    window.add(grid, showColumnFilter, showColumnMenu);
+  }
+
+  private List<Map<String, Object>> getColumnDefs() {
+    return List.of(
+            Map.of("field", "make", "filter", "agStringColumnFilter"),
+            Map.of("field", "model", "filter", "agStringColumnFilter"),
+            Map.of("field", "price", "filter", "agNumberColumnFilter"),
+            Map.of("field", "electric", "filter", "agBooleanColumnFilter")
+    );
+  }
+
+  private List<Map<String, Object>> getRows() {
+    return List.of(
+            Map.of("make", "Tesla", "model", "Model y", "price", 64950, "electric", true),
+            Map.of("make", "Ford", "model", "F-Series", "price", 33850, "electric", false),
+            Map.of("make", "Toyota", "model", "Corolla", "price", 29600, "electric", false),
+            Map.of("make", "Honda", "model", "Civic", "price", 28600, "electric", false),
+            Map.of("make", "BMW", "model", "X5", "price", 36500, "electric", false),
+            Map.of("make", "Mercedes", "model", "E-Class", "price", 41500, "electric", false),
+            Map.of("make", "Audi", "model", "A4", "price", 36900, "electric", false),
+            Map.of("make", "Volkswagen", "model", "Golf", "price", 25600, "electric", false),
+            Map.of("make", "Nissan", "model", "Maxima", "price", 31900, "electric", false),
+            Map.of("make", "Hyundai", "model", "Kona", "price", 23600, "electric", false),
+            Map.of("make", "Chevrolet", "model", "Camaro", "price", 34900, "electric", false),
+            Map.of("make", "Infiniti", "model", "Q50", "price", 39900, "electric", false),
+            Map.of("make", "Ford", "model", "Mustang", "price", 46900, "electric", false),
+            Map.of("make", "Dodge", "model", "Charger", "price", 28900, "electric", false),
+            Map.of("make", "Mercury", "model", "Mariner", "price", 21600, "electric", false),
+            Map.of("make", "Mazda", "model", "3", "price", 23600, "electric", false),
+            Map.of("make", "Cadillac", "model", "Escalade", "price", 39900, "electric", false),
+            Map.of("make", "Buick", "model", "Enclave", "price", 32900, "electric", false),
+            Map.of("make", "Honda", "model", "Accord", "price", 25600, "electric", false),
+            Map.of("make", "Chevrolet", "model", "Corvette", "price", 49900, "electric", false),
+            Map.of("make", "Ford", "model", "Explorer", "price", 42900, "electric", false),
+            Map.of("make", "Volkswagen", "model", "Jetta", "price", 28600, "electric", false),
+            Map.of("make", "Hyundai", "model", "Santa Fe", "price", 23600, "electric", false),
+            Map.of("make", "Nissan", "model", "Altima", "price", 31900, "electric", false),
+            Map.of("make", "Toyota", "model", "Camry", "price", 29600, "electric", false),
+            Map.of("make", "Ford", "model", "F-150", "price", 46900, "electric", false),
+            Map.of("make", "Dodge", "model", "Charger", "price", 28900, "electric", false),
+            Map.of("make", "Chevrolet", "model", "Camaro", "price", 34900, "electric", false),
+            Map.of("make", "Mazda", "model", "3", "price", 23600, "electric", false),
+            Map.of("make", "Ford", "model", "Mustang", "price", 46900, "electric", false),
+            Map.of("make", "Ford", "model", "Explorer", "price", 42900, "electric", false),
+            Map.of("make", "Volkswagen", "model", "Jetta", "price", 28600, "electric", false),
+            Map.of("make", "Hyundai", "model", "Santa Fe", "price", 23600, "electric", false),
+            Map.of("make", "Nissan", "model", "Altima", "price", 31900, "electric", false),
+            Map.of("make", "Toyota", "model", "Camry", "price", 29600, "electric", false),
+            Map.of("make", "Ford", "model", "F-150", "price", 46900, "electric", false),
+            Map.of("make", "Dodge", "model", "Charger", "price", 28900, "electric", false)
+    );
   }
 }

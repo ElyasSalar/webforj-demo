@@ -59,6 +59,7 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "grid",
     "jdk.selected.JAVA_MODULE": "corretto-18",
     "kotlin-language-version-configured": "true",
@@ -74,11 +75,14 @@
       <recent name="D:\JavaProjects\demo\src\main\resources" />
       <recent name="D:\JavaProjects\demo\src\main\java\com\dwcj\components" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.webforj.demo.component" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d2fb31f0-492d-4c6c-bbf9-6104ae6109b9" name="Changes" comment="" />
+      <changelist id="d0714e89-c9b9-490f-ac61-c8ff86e1d77d" name="Changes" comment="" />
       <created>1691934683128</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
