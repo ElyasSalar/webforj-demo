@@ -1,6 +1,10 @@
 package org.webforj.demo;
 
 import com.webforj.App;
+import com.webforj.addons.components.propertiespanel.PropertiesPanel;
+import com.webforj.addons.components.propertiespanel.schema.*;
+import com.webforj.component.list.ChoiceBox;
+import com.webforj.component.list.ListItem;
 import com.webforj.component.window.Frame;
 import com.webforj.exceptions.WebforjException;
 import com.webforj.addons.components.multiselectcombo.MultiSelectCombo;
@@ -55,33 +59,33 @@ public class Demo extends App {
 //      }
 //    });
 
-    final var suggestionEdit = createSuggestionEdit();
-    suggestionEdit.setSuggestions(List.of());
+//    final var suggestionEdit = createSuggestionEdit();
+//    suggestionEdit.setSuggestions(List.of());
 //
-    suggestionEdit.addInputListener((event) -> {
-      if (event.getValue().isEmpty()) {
-        return;
-      }
-
-      final var filteredSuggestions = getSuggestions()
-              .stream()
-              .filter(suggestion -> suggestion.getValue().contains(event.getValue()))
-              .toList();
-
-      if (filteredSuggestions.isEmpty()) {
-        return;
-      }
-
-      suggestionEdit.setSuggestions(filteredSuggestions);
-      suggestionEdit.activateItem(0);
-    });
-    suggestionEdit.addOpenedListener((event) -> {
-      App.console().log("dropdown opened");
-      suggestionEdit.activateItem(0);
-    });
-    suggestionEdit.addClosedListener((event) -> {
-      App.console().log("dropdown closed");
-    });
+//    suggestionEdit.addInputListener((event) -> {
+//      if (event.getValue().isEmpty()) {
+//        return;
+//      }
+//
+//      final var filteredSuggestions = getSuggestions()
+//              .stream()
+//              .filter(suggestion -> suggestion.getValue().contains(event.getValue()))
+//              .toList();
+//
+//      if (filteredSuggestions.isEmpty()) {
+//        return;
+//      }
+//
+//      suggestionEdit.setSuggestions(filteredSuggestions);
+//      suggestionEdit.activateItem(0);
+//    });
+//    suggestionEdit.addOpenedListener((event) -> {
+//      App.console().log("dropdown opened");
+//      suggestionEdit.activateItem(0);
+//    });
+//    suggestionEdit.addClosedListener((event) -> {
+//      App.console().log("dropdown closed");
+//    });
 //
 //    final var toggleButton = new Button("Toggle", (event) -> {
 //      suggestionEdit.open().thenAccept(result -> {
@@ -89,7 +93,32 @@ public class Demo extends App {
 //      });
 //    });
 
-    window.add(suggestionEdit);
+    final var propertiesPanel = createPropertiesPanel();
+
+    window.add(propertiesPanel);
+  }
+
+  private PropertiesPanel createPropertiesPanel() {
+    final var options = List.of(
+            new EnumOption("value", "Value", "value"),
+            new EnumOption("label", "Label", "label")
+    );
+    final var schemaProperty1 = new StringSchema("name", "Name");
+    final var schemaProperty2 = new BooleanSchema("active", "Active");
+    final var schemaProperty3 = new EnumSchema("status", "Status").setOptions(options);
+    final var schemaProperty4 = new NumberSchema("age", "Age");
+
+    final var schemaGroup1 = new SchemaGroup("group1");
+    schemaGroup1.addProperty(schemaProperty1);
+    schemaGroup1.addProperty(schemaProperty2);
+    schemaGroup1.addProperty(schemaProperty3);
+    schemaGroup1.addProperty(schemaProperty4);
+
+    final var propertiesPanel = new PropertiesPanel();
+    propertiesPanel.setSchema(List.of(schemaGroup1, schemaGroup1, schemaGroup1, schemaGroup1));
+    propertiesPanel.setStyle("width", "300px");
+
+    return propertiesPanel;
   }
 
   private SideMenu createSideMenu() {
