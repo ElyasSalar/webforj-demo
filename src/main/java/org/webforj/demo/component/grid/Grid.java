@@ -22,7 +22,7 @@ import java.util.Objects;
  * @since 24.20
  */
 @NodeName("dwc-grid")
-@JavaScript(value = "http://localhost:8888/basis/grid@33/dwc-grid.js", top = true, attributes = {
+@JavaScript(value = "/static/grid/dwc-grid.js", top = true, attributes = {
 		@Attribute(name = "type", value = "module")})
 public class Grid extends ElementComposite
 		implements
