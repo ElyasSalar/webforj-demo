@@ -14,12 +14,14 @@ import java.util.concurrent.TimeUnit;
 public class HomeView extends Composite<Div> {
 
   private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+  private final Toast toast;
 
   public HomeView() {
-    Toast.show("initial toast triggering", Toast.Placement.TOP_LEFT);
+    this.toast = new Toast();
+    this.toast.setText("initial toast triggering").setPlacement(Toast.Placement.TOP_LEFT).open();
 
     scheduler.schedule(() -> {
-      Toast.show("toast triggered in another thread", Toast.Placement.TOP_RIGHT);
+      this.toast.setText("toast triggered in another thread").setPlacement(Toast.Placement.TOP_RIGHT).open();
     }, 500, TimeUnit.MILLISECONDS);
 
     final var future = CompletableFuture.runAsync(() -> {
@@ -31,7 +33,7 @@ public class HomeView extends Composite<Div> {
     });
 
     future.thenAccept(__ -> {
-      Toast.show("toast triggered within an asynchronous block", Toast.Placement.BOTTOM_RIGHT);
+      this.toast.setText("toast triggered within an asynchronous block").setPlacement(Toast.Placement.BOTTOM_RIGHT).open();
     });
   }
 }
