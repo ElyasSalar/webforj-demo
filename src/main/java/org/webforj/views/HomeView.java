@@ -5,6 +5,7 @@ import com.webforj.component.field.NumberField;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.concern.HasClientValidationStyle.ValidationStyle;
 import com.webforj.router.annotation.Route;
 
 @Route("/")
@@ -28,6 +29,7 @@ public class HomeView extends Composite<Div> {
     final var numberField = new NumberField();
     numberField.setLabel("Enter a number");
     numberField.setPlaceholder("Type a number here");
+    numberField.setValidationStyle(ValidationStyle.INLINE);
 
     final var min = new NumberField();
     min.setLabel("Minimum Value");
