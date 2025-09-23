@@ -4,7 +4,6 @@ import com.webforj.component.Composite;
 import com.webforj.component.field.NumberField;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.optioninput.CheckBox;
 import com.webforj.component.slider.Slider;
 import com.webforj.router.annotation.Route;
 
@@ -44,14 +43,16 @@ public class HomeView extends Composite<Div> {
       slider.setMax(value);
     });
 
-    final var slideByWheel = new CheckBox();
-    slideByWheel.setText("Slide by mouse wheel");
-    slideByWheel.setValue(slider.isSlideByWheel());
-    slideByWheel.addValueChangeListener(event -> {
-      slider.setSlideByWheel(event.getValue());
+    final var value = new NumberField();
+    value.setLabel("Current Value");
+    value.setPlaceholder("Set current value");
+    value.setValue(slider.getValue().doubleValue());
+    value.addValueChangeListener(event -> {
+      final var v = event.getValue() != null ? event.getValue().intValue() : 0;
+      slider.setValue(v);
     });
 
-    container.add(slider, min, max, slideByWheel);
+    container.add(slider, min, max, value);
 
     self.add(container);
   }
