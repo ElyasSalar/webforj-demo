@@ -32,14 +32,16 @@ public class HomeView extends Composite<Div> {
     min.setLabel("Minimum Value");
     min.setPlaceholder("Set minimum value");
     min.addValueChangeListener(event -> {
-      slider.setMin(event.getValue().intValue());
+      final var value = slider.getValue() != null ? slider.getValue().intValue() : 0;
+      slider.setMin(value);
     });
 
     final var max = new NumberField();
     max.setLabel("Maximum Value");
     max.setPlaceholder("Set maximum value");
     max.addValueChangeListener(event -> {
-      slider.setMax(event.getValue().intValue());
+      final var value = slider.getValue() != null ? slider.getValue().intValue() : 0;
+      slider.setMax(value);
     });
 
     final var slideByWheel = new CheckBox();
