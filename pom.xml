@@ -25,6 +25,11 @@
       <artifactId>webforj</artifactId>
       <version>${webforj.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.webforj.addons</groupId>
+      <artifactId>webforj-webauthn</artifactId>
+      <version>25.12</version>
+    </dependency>
   </dependencies>
 
   <build>
